@@ -9,11 +9,11 @@ black = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35]
 def which_bet():
     #User pick between color bet vs number or both
     bet_choice = ''
-    while bet_choice != 'number' or bet_choice != 'color' or bet_choice != 'both':
-        print
+    while bet_choice != 'number' and bet_choice != 'color' and bet_choice != 'both':
+        bet_choice = input("Bet on number, color, or both? \n")
+    return bet_choice
 
-
-
+print(which_bet())
 
 def take_color(color):
 
@@ -28,13 +28,3 @@ def roll_ball():
     random_num = random.randint(0,37)
     return random_num
 
-take_color(bet_color)
-take_bet(bet_amount, bank_account)
-take_number(bet_number)
-roll_ball()
-
-print(bet_color)
-print(bet_number)
-print(bet_amount)
-print(bank_account)
-print(roll_ball())
