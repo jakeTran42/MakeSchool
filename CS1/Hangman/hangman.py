@@ -1,4 +1,5 @@
 import random
+import string
 
 def loadWord():
    f = open('hangman_words.txt', 'r')
@@ -13,10 +14,25 @@ def loadWord():
 def getGuessed(lettersGuessed):
     guess = "0"
     while guess not in string.ascii_lowercase or guess in lettersGuessed:
-        guess = input
+        guess = input("What letter would you like to guess?")
+    return guess
+
+def gameOver(secretWord, lettersGuessed):
+  counter  = 0
+  for letter in lettersGuessed:
+    if letter not in secretWord:
+      counter += 1
+  if counter == 10:
+    print("You've ran out of guesses. The secret word is: " + secretWord + ".")
+    return True
+  for letter in secretWord:
+    if letter not in lettersGuessed:
+      return False
+  print(secretWord + "\nYou won!")
+  return True
 
 
-def isWordGuessed(secretWord, lettersGuessed):
+def isWordGuessed(lettersGuessed):
     '''
     secretWord: string, the random word the user is trying to guess.  This is selected on line 9.
     lettersGuessed: list of letters that have been guessed so far.
@@ -24,6 +40,10 @@ def isWordGuessed(secretWord, lettersGuessed):
       False otherwise
     '''
     # FILL IN YOUR CODE HERE...
+    print("Guesssed:", end=" ")
+    for character in lettersGuessed:
+        print(character, end=", ")
+    print("")
 
 
 
@@ -38,7 +58,21 @@ def getGuessedWord(secretWord, lettersGuessed):
     '''
     # FILL IN YOUR CODE HERE...
 
+    for letter in secretWord:
+      if letter in lettersGuessed:
+        print(letter, end=" ")
+      else:
+        print("_", end=" ")
 
+def guessesLeft(secretWord, lettersGuessed):
+
+  guesses = 10
+
+  for letter in lettersGuessed:
+    if letter not in secretWord:
+      guesses -= 1
+  print(" You have " + str(guesses) + " guesses left")
+  
 
 
 def getAvailableLetters(lettersGuessed):
@@ -69,8 +103,15 @@ def hangman(secretWord):
       user has not yet guessed.
     '''
     # FILL IN YOUR CODE HERE...
+    lettersGuessed = []
+    while not gameOver(secretWord, lettersGuessed):
+      getGuessedWord(secretWord, lettersGuessed)
+      guessesLeft(secretWord, lettersGuessed)
+      guess = getGuessed(lettersGuessed)
+      lettersGuessed.append(guess)
+      isWordGuessed(lettersGuessed)
 
 
 secretWord = loadWord()
 #This is a comment
-print(secretWord)
+hangman(secretWord)

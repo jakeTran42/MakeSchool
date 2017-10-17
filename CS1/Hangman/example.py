@@ -1,14 +1,14 @@
 import random
 import string
-import requests
-from bs4 import BeautifulSoup
+# import requests
+# from bs4 import BeautifulSoup
 
 
-page = requests.get("https://www.makeschool.com/")
-soup = BeautifulSoup(page.content, 'html.parser')
-blockquotes = soup.find_all('blockquote')
-webWords = blockquotes[1].get_text().split(' ')
-secretWebWord = random.choice(webWords)
+# page = requests.get("https://www.makeschool.com/")
+# soup = BeautifulSoup(page.content, 'html.parser')
+# blockquotes = soup.find_all('blockquote')
+# webWords = blockquotes[1].get_text().split(' ')
+# secretWebWord = random.choice(webWords)
 
 
 def loadWord():
@@ -121,5 +121,5 @@ def hangman(secretWord):
 
 
 secretWord = loadWord()
-print(secretWebWord)
-hangman(secretWebWord)
+# print(secretWebWord)
+hangman(secretWord)
