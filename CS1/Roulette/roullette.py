@@ -141,17 +141,16 @@ def play_game():
     else:
         print("Bank account: $" + str(bank_account))
 
+        ball_roll = roll_ball()
+
         print("For your bet on the number: ")
         bet_amount_num = take_bet()
         number_take = take_number()
+        num_result = check_number(ball_roll, number_take)
 
         print("For your bet on the color:")
         bet_amount_color = take_bet()
         color_take = take_color()
-        
-        ball_roll = roll_ball()
-
-        num_result = check_number(ball_roll, number_take)
         color_result = check_color(ball_roll, color_take)
 
         print(payout(bet_amount_color, color_result))
