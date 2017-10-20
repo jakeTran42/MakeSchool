@@ -1,0 +1,21 @@
+<h1>Favorite Game</h1>
+<div class="row">
+  {{#each favs}}
+    <div class="col-sm-4">
+      <a href="/games/{{this._id}}">
+        <h4><b><legend>{{this.title}}</legend></b></h4>
+        <h4><b>Description</b> <h5><small>{{this.description}}</small></h5></h4>
+        <h4> <b>Score - </b> {{this.rating}}</h4>
+      </a>
+
+      <a href="/favs/{{this._id}}/edit" class="btn btn-info">Edit Game</a>
+
+      <p>
+        <form method="POST" action="/favs/{{this._id}}?_method=DELETE">
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+      </p>
+
+    </div>
+{{/each}}
+</div>

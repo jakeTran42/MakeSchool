@@ -12,6 +12,13 @@ var Game = mongoose.model('Game', {
     rating: Number
 });
 
+var Fav = mongoose.model('Fav', {
+    title: String,
+    description: String,
+    comment: String,
+    rating: Number
+});
+
 mongoose.connect('mongodb://localhost/game-list');
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -20,7 +27,7 @@ app.use(methodOverride('_method'))
 
 
 
-
+//==============================================================//
 // INDEX
 app.get('/', function (req, res) {
     Game.find(function(err, games) {
@@ -66,7 +73,15 @@ app.delete('/games/:id', function (req, res) {
     Game.findByIdAndRemove(req.params.id, function(err) {
       res.redirect('/');
     })
-  })  
+  })
+//====================================================//
+
+app.get('/favs', function (req, res) {
+  Fav.find(function(err, favs) {
+    res.render('favs-index', {favs: favs});
+  })
+})
+
 
 
 
