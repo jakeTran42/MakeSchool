@@ -1,0 +1,43 @@
+<!-- games-new.handlebars -->
+
+<legend>New Game</legend>
+<form method="POST" action="/games">
+
+    <!--title-->
+    <p>
+        <label for="title">Game Title</label>
+        <input type="text" name="title">
+    </p>
+
+    <!--DESCRIPTION-->
+
+    <p>
+        <label for="description">Description</label>
+        <textarea name="description" rows="10" cols="80"></textarea>
+    </p>
+
+    <!--COMMENT-->
+    <p>
+        <label for="comment">Comment</label>
+        <textarea name="comment" rows="5" cols="80"></textarea>
+    </p>
+
+    <!--RATING-->
+    <!-- <p>
+        <label for="rating">Rating</label>
+        <select class="" name="Rating">
+            <option value={{games.rating}} selected disabled hidden>{{games.rating}}</option>
+            <option value=0>0</option>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+        </select>
+    </p> -->
+
+    <!-- BUTTON -->
+    <p>
+        <button type="submit" name="Save">Save Game</button>
+    </p>
+</form>

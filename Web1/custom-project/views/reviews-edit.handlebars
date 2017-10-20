@@ -1,0 +1,27 @@
+<!-- reviews-edit.handlebars -->
+
+<legend>Edit Game</legend>
+<form method="POST" action="/games/{{game._id}}?_method=PUT">
+  <!-- TITLE -->
+  <p>
+    <label for="title">Game Title</label><br>
+    <input type="text" name="title" value="{{game.title}}"/>
+  </p>
+
+  <!-- DESCRIPTION -->
+  <p>
+    <label for="description">Description</label><br>
+    <textarea name="description" rows="10" />{{game.description}}</textarea>
+  </p>
+
+  <!-- COMMENT -->
+  <p>
+    <label for="comment">Comment</label><br>
+    <textarea name="comment" rows="5" />{{game.description}}</textarea>
+  </p>
+
+  <!-- BUTTON -->
+  <p>
+    <button type="submit">Save Changes</button>
+  </p>
+</form>
