@@ -1,0 +1,22 @@
+<!-- views/games-show.handlebars -->
+
+<style>
+    #comment {
+        box-shadow: 10px 10px 5px #888888;
+    }
+
+</style>
+
+<a href="/">Back to Home</a>
+
+<h1><legend><h1><b>{{game.title}}</b></h1></legend></h1>
+
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <h3> <b>Description</b> <h4>{{game.description}}</h4></h3>
+        <h3> <b>Rating - </b> {{game.rating}}</h3>
+        <div class="w3-container" id="comment">
+            <p> <b>Personal Comment:</b> {{game.comment}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<!-- games-edit.handlebars -->
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <legend>Edit Game</legend>
+    <form method="POST" action="/games/{{game._id}}?_method=PUT">
+        {{> games-form }}
+    </form>
+  </div>
+</div>
