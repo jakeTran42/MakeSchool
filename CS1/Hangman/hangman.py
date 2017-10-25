@@ -17,12 +17,12 @@ def getGuessed(lettersGuessed):
         guess = input("What letter would you like to guess?")
     return guess
 
-def gameOver(secretWord, lettersGuessed):
-  counter  = 0
+def outOfGuess(secretWord, lettersGuessed):
+  count  = 0
   for letter in lettersGuessed:
     if letter not in secretWord:
-      counter += 1
-  if counter == 10:
+      count += 1
+  if count == 10:
     print("You've ran out of guesses. The secret word is: " + secretWord + ".")
     return True
   for letter in secretWord:
@@ -104,7 +104,7 @@ def hangman(secretWord):
     '''
     # FILL IN YOUR CODE HERE...
     lettersGuessed = []
-    while not gameOver(secretWord, lettersGuessed):
+    while not outOfGuess(secretWord, lettersGuessed):
       getGuessedWord(secretWord, lettersGuessed)
       guessesLeft(secretWord, lettersGuessed)
       guess = getGuessed(lettersGuessed)
