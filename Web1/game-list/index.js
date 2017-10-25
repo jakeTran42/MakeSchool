@@ -19,7 +19,7 @@ var Fav = mongoose.model('Fav', {
     rating: Number
 });
 
-mongoose.connect('mongodb://localhost/game-list');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/game-list', {userMongoClient: true, })
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -85,6 +85,6 @@ app.get('/favs', function (req, res) {
 
 
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
     console.log('Portfolio App listening on port 3000!')
   })
