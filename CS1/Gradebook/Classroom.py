@@ -25,6 +25,10 @@ class Classroom(object):
         else:
             print("This Student Do Not Exist")
             return False
+
+    def show_roster(self):
+        for students in self.roster:
+            print(students)
     
     def add_assignment(self, new_assignment, score):
         if new_assignment in self.assignments:
@@ -32,28 +36,19 @@ class Classroom(object):
             return False
         else:
             self.assignments[new_assignment] = score
-        
-        for student in self.roster:
-            self.roster[student].scores[new_assignment] = -1
         print("Successfully Added Assignment")
     
     def rm_assignment(self, assignment_name):
         if assignment_name in self.assignments:
             del self.assignments[assignment_name]
-            for student in self.roster:
-                del self.roster[student].scores[assignment_name]
             print("Successfully Deleted Assignment")
         else:
             print("This assignment does not exist")
             return False
-    
-    def meet_days_time(self):
-        print("Class will meet on " + self.class_day)
 
     def show_assignment(self):
         for assignment in self.assignments:
             print(assignment)
-
-    def show_roster(self):
-        for students in self.roster:
-            print(students)
+    
+    def meet_days_time(self):
+        print("Class will meet on " + self.class_day)
