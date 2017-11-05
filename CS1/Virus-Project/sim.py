@@ -245,6 +245,7 @@ class Simulation(object):
         # to reset self.newly_infected back to an empty list!
 
 if __name__ == "__main__":
+    
     params = sys.argv[1:]
     pop_size = int(params[0])
     vacc_percentage = float(params[1])
