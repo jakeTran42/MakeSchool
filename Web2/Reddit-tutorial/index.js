@@ -20,9 +20,9 @@ app.get('/', function (req, res) {
   res.render('home', {msg: 'Hello World!'});
 })
 
-app.get('/posts/new', function (req, res) {
-    res.render('posts-new', {});
-})
+// app.get('/posts/new', function (req, res) {
+//     res.render('posts-new', {});
+// })
 
 
 
