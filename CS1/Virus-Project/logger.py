@@ -94,6 +94,7 @@ class Logger(object):
                 f.write("Person %s died\n" % (person._id))
             else:
                 f.write("Person %s alive\n" % (person._id))
+    '''
 
     def log_time_step(self, time_step_number):
         # TODO: Finish this method.  This method should log when a time step ends, and a
@@ -106,4 +107,4 @@ class Logger(object):
         # event logged ends up on a separate line!
         with open(self.file_name, 'a') as f:
             f.write("Similation %s ended, Starting %s... \n" % (time_step_number, time_step_number+1))
-           
+    '''
