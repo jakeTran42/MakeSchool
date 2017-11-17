@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tip Calculator</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div>
+            <p><input id="price"></p>
+            <p><input id="tip-percent"></p>
+            <select id="changeTipList" name="">
+                <option value="15"> 15% </option>
+                <option value="20"> 20% </option>
+                <option value="25"> 25% </option>
+            </select>
+            <p id="tip">??</p>
+            <p id="total">??</p>
+            <!-- <p> <button id="calculate">Calculate</button> </p> -->
+            <!-- <p> <button type="button" name="button" id="setPrice"></button> </p> -->
+            <p> <button type="button" name="button" id="show-modal"> Show Modal </button> </p>
+        </div>
+
+        <div id="overlay" class="modal">
+            <div>
+                Hello!
+            </div>
+        </div>
+
+        <script>
+
+            const modalButton = document.getElementById('show-modal')
+            const overlay = document.getElementById('overlay')
+            const close_butt = document.createElement("button")
+            close_butt.innerHTML = 'X'
+            overlay.appendChild(close_butt)
+
+            modalButton.addEventListener('click', (e) => {
+                overlay.classList.toggle('show')
+            })
+            close_butt.addEventListener('click', (e) =>{
+                overlay.classList.toggle('show')
+            })
+            const priceInput = document.getElementById('price')
+            const tipInput = document.getElementById('tip-percent')
+            const tipView = document.getElementById('tip')
+            const totalView = document.getElementById('total')
+            // const calcButton = document.getElementById('calculate')
+            const tip_list = document.getElementById('changeTipList')
+
+            const calculateTip = (price, tipPercent) => {
+                let tip = price * tipPercent / 100
+                return tip
+            }
+
+            const shouldCalculate = () => {
+                if (tipInput.value && priceInput.value){
+                    const price = Number(priceInput.value)
+                    const percent  = Number(tipInput.value)
+                    console.log('it should calcualte')
+                    tip = calculateTip(price, percent)
+                    totalView.innerHTML = (price + tip).toFixed(2)
+                    tipView.innerHTML = tip.toFixed(2)
+                }else{
+                console.log('it should not')
+                }
+            }
+
+            tip_list.addEventListener('input', (e) => {
+                tipInput.value = e.target.value
+                shouldCalculate()
+            })
+
+            tipInput.addEventListener('input', (e) => {
+                console.log('changed')
+                tipInput.value = e.target.value
+                shouldCalculate()
+
+            })
+
+            priceInput.addEventListener('input', (e) => {
+                shouldCalculate()
+            })
+
+
+
+
+
+            // calcButton.addEventListener('click', (event) => {
+                // const price = Number(priceInput.value)
+                // const percent  = Number(tipInput.value)
+            //     const tip = calculateTip(price, percent)
+            //     tipView.innerHTML = tip.toFixed(2)
+            //     totalView.innerHTML = (tip + price).toFixed(2)
+            // })
+
+        </script>
+
+    </body>
+</html>
