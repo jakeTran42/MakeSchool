@@ -67,6 +67,7 @@
                 }
             }
 
+            //'input' will change value upon user's input base on listerner
             tip_list.addEventListener('input', (e) => {
                 tipInput.value = e.target.value
                 shouldCalculate()
@@ -82,10 +83,6 @@
             priceInput.addEventListener('input', (e) => {
                 shouldCalculate()
             })
-
-
-
-
 
             // calcButton.addEventListener('click', (event) => {
                 // const price = Number(priceInput.value)
