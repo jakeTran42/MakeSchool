@@ -1,5 +1,0 @@
-Population Size: 300
-Vaccination Percentage: 0.4
-Virus Name: eboa
-Mortality Rate: 0.2
-Reproduction Rate: 0.2

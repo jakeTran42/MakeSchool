@@ -1,5 +1,0 @@
-- make new favorite
-    - add "favorite" attribute (Boolean) to the Game model 
-    - make a form for the favorite button => action="/games/{{game._id}}". <input type="hidden" name="favorite" value="true">
-    - in update route it should set favorite to true - redirect to games#show 
-    - make the Unmark Favorites button form
