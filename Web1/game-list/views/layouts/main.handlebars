@@ -1,0 +1,50 @@
+<!-- main.handlebars -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Game List</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+          Game List
+        </a>
+      </div>
+
+      <div class="pull-right">
+        <a href="/games/new" class="btn btn-success navbar-btn">Add Game</a>
+      </div>
+
+      <div class="pull-left">
+        <a href="/favs" class="btn btn-default navbar-btn">Favorite</a>
+      </div>
+
+      <div class="pull-left">
+        <a href="/" class="btn btn-default navbar-btn">Complete</a>
+      </div>
+
+      <div class="pull-left">
+        <a href="/" class="btn btn-default navbar-btn">On-Hold</a>
+      </div>
+
+    </div>
+  </nav>
+
+  <div class="container">
+    {{{body}}}
+  </div>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

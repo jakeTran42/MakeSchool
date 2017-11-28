@@ -1,0 +1,8 @@
+# Created by https://www.gitignore.io/api/macos,python
+
+### macOS ###
+*.DS_Store
+.AppleDouble
+.LSOverride
+_config.yml
+*package-lock.json

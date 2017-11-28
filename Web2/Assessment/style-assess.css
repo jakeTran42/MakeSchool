@@ -1,0 +1,30 @@
+body {
+    font-size: 20px;
+    font-style: Helvetica;
+    border-radius: 5px;
+}
+
+thead {
+    background-color: black;
+    color: white;
+}
+
+tr:nth-child(2n) {
+    background: lightblue;
+}
+
+input[value=submit] {
+    background: green;
+    color: white;
+    border-radius: 5px;
+}
+
+input[value=clear] {
+    background: red;
+    color: white;
+    border-radius: 5px;
+}
+
+tbody td:nth-child(2):before, tbody td:nth-child(4):before {
+    content: '$';
+}

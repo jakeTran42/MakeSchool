@@ -1,0 +1,50 @@
+<!-- views/partials/games-form.handlebars -->
+
+<!-- TITLE -->
+
+<div class="form-group">
+  <label for="title">Game Title</label><br>
+  <input class="form-control" type="text" name="title" value="{{game.title}}"/>
+</div>
+
+<!-- DESCRIPTION -->
+
+<div class="form-group">
+  <label for="description">Description</label><br>
+  <textarea class="form-control" name="description" rows="10" />{{game.description}}</textarea>
+</div>
+
+<!-- COMMENT -->
+
+<div class="form-group">
+  <label for="comment">Comment</label><br>
+  <textarea class="form-control" name="comment" rows="5" />{{game.description}}</textarea>
+</div>
+
+<!-- RATING -->
+
+<div class="form-group">
+  <label for="rating">Rating</label>
+  <select class="form-control" name="rating" value={{game.rating}}>
+      <option value={{game.rating}} selected disabled hidden>{{game.rating}}</option>
+      <option value=''> - No Rating</option>
+      <option value=1>1 out of 10 - Appalling</option>
+      <option value=2>2 out of 10 - Horrible</option>
+      <option value=3>3 out of 10 - Very Bad</option>
+      <option value=4>4 out of 10 - Bad</option>
+      <option value=5>5 out of 10 - Average</option>
+      <option value=6>6 out of 10 - Interesting</option>
+      <option value=7>7 out of 10 - Good</option>
+      <option value=8>8 out of 10 - Very Good</option>
+      <option value=9>9 out of 10 - Excellent</option>
+      <option value=10>10 out of 10 - Masterpiece</option>
+  </select>
+</div>
+
+
+<!-- BUTTON -->
+<p>
+  <button type="submit" class="btn btn-primary">Save Game</button>
+</p>
+
+<a href="/" class="btn btn-danger">Cancel</a>
