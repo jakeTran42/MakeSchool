@@ -24,8 +24,12 @@
 | x  | Action  | HTTP Verbs  | Path  | Returns  |
 |---|---|---|---|---|
 | 1  | Index  | GET  | /  | Home/Index  |
-| 2  | Show  | GET  | /users/signin  | User Can Sign In  |
-| 3  | New  | GET  | /users/new  | User Can Sign Up  |
-| 4  | Show  | GET  | /users/:id/favorites | User Can View Their Favorites  |
-| 5  |   |   |   |   |
-| 6  |   |   |   |   |
+| 2  | New  | GET  | /signin  | User See Sign-in Form  |
+| 3  | Show  | POST  | /Users/signin  | User Can Sign In  |
+| 4  | Show  | GET  | /sign-up  | User See Sign-up Form  |
+| 5  | New  | POST  | /Users/sign-up  | User Can Sign Up  |
+| 6  | Show  | GET  | /users/:id/favorites | User Can View Their Favorites  |
+| 7  | Show  | GET  | /users/logout  | Logout For Users  |
+| 8  | Show  | POST  | /Users/:postId/comments  | Creating New Comments  |
+| 9  | New  | GET  | /Users/:id/game/new  | New Game form  |
+| 10  | Show  | POST  | /Users/:id/games  | Adding new games to user account  |
