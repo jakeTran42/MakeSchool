@@ -2,7 +2,5 @@
 
 ### macOS ###
 *.DS_Store
-.AppleDouble
-.LSOverride
 _config.yml
 *package-lock.json
