@@ -21,7 +21,7 @@
 
 ## ROUTES
 
-| x  | Action  | HTTP Verbs  | Path  | Returns  |
+| Routes  | Action  | HTTP Verbs  | Path  | Returns  |
 |---|---|---|---|---|
 | 1  | Index  | GET  | /  | Home/Index  |
 | 2  | New  | GET  | /signin  | User See Sign-in Form  |
