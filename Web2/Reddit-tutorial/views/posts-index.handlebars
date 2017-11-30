@@ -1,0 +1,28 @@
+<!-- posts-index -->
+
+<h1>Posts</h1>
+
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+
+    {{#each posts}}
+
+      <li class="list-group-item">
+
+        <div class="lead"> <a href="/posts/{{this._id}}" class="lead">{{this.title}}</a> </div>
+
+        <div> <a href="{{this.url}}" target="_blank">{{this.url}}<a> </div>
+
+        <h6>{{this.createdAt}}</h6>
+      </li>
+
+      <!-- <a href="/reviews/{{this._id}}/edit">Edit</a>
+
+      <form method="POST" action="/reviews/{{this._id}}?_method=DELETE">
+        <button type="submit">Delete</button>
+      </form> -->
+
+    {{/each}}
+
+  </div>
+</div>

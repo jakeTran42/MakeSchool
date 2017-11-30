@@ -3,6 +3,7 @@ var app = express()
 var exphbs  = require('express-handlebars');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var Post = require('./models/post')
 
 
 
@@ -22,14 +23,28 @@ require('./controllers/posts.js')(app);
 
 
 //Routes
+
+//Index Route
 app.get('/', function (req, res) {
-  res.render('home', {msg: 'Hello Reddit!'});
+  Post.find().exec(function (err, posts) {
+    res.render('posts-index', { posts: posts });
+  });
 })
 
+//New Form
 app.get('/posts/new', function (req, res) {
     res.render('posts-new', {})
 })
 
+//Show Post
+app.get('/posts/:id', function (req, res) {
+    // LOOK UP THE POST
+    Post.findById(req.params.id).exec(function(err, post) {
+
+      // RESPOND BY RENDERING THE TEMPLATE
+      res.render('post-show', { post: post });
+    });
+  });
 
 
 
