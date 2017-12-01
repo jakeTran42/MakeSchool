@@ -8,7 +8,9 @@ var Post = require('./models/post')
 
 
 // Middlewares
+mongoose.Promise = global.Promise
 mongoose.connect('mongodb://localhost/reddit-clone', { useMongoClient: true });
+mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection Error:'))
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,10 +27,19 @@ require('./controllers/posts.js')(app);
 //Routes
 
 //Index Route
+
+// app.get('/', function (req, res) {
+//   Post.find().exec(function (err, posts) {
+//     res.render('posts-index', { posts: posts });
+//   });
+// })
+
 app.get('/', function (req, res) {
-  Post.find().exec(function (err, posts) {
-    res.render('posts-index', { posts: posts });
-  });
+    Post.find({}).then((posts) => {
+      res.render('posts-index.handlebars', { posts })
+    }).catch((err) => {
+      console.log(err.message);
+    })
 })
 
 //New Form
@@ -37,15 +48,32 @@ app.get('/posts/new', function (req, res) {
 })
 
 //Show Post
+
+// app.get('/posts/:id', function (req, res) {
+//     // LOOK UP THE POST
+//     Post.findById(req.params.id).exec(function(err, post) {
+//
+//       // RESPOND BY RENDERING THE TEMPLATE
+//       res.render('post-show', { post: post });
+//     });
+//   });
+
 app.get('/posts/:id', function (req, res) {
-    // LOOK UP THE POST
-    Post.findById(req.params.id).exec(function(err, post) {
+   // LOOK UP THE POST
+   Post.findById(req.params.id).then((post) => {
+     res.render('post-show.handlebars', { post })
+   }).catch((err) => {
+     console.log(err.message)
+   })
+ })
 
-      // RESPOND BY RENDERING THE TEMPLATE
-      res.render('post-show', { post: post });
-    });
+ app.get('/r/:subreddit', function(req, res) {
+     Post.find({ subreddit: req.params.subreddit }).then((posts) => {
+       res.render('posts-index.handlebars', { posts })
+     }).catch((err) => {
+       console.log(err)
+     })
   });
-
 
 
 //Host

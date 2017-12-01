@@ -9,11 +9,20 @@
 
       <li class="list-group-item">
 
-        <div class="lead"> <a href="/posts/{{this._id}}" class="lead">{{this.title}}</a> </div>
+        <div class="lead">
+            <a href="/posts/{{this._id}}" class="lead">{{this.title}}</a>
+        </div>
 
-        <div> <a href="{{this.url}}" target="_blank">{{this.url}}<a> </div>
+        <div>
+            <a href="{{this.url}}" target="_blank">{{this.url}}<a>
+        </div>
+
+        <div class="text-right">
+            <a href="/r/{{this.subreddit}}">/r/{{this.subreddit}}</a>
+        </div>
 
         <h6>{{this.createdAt}}</h6>
+
       </li>
 
       <!-- <a href="/reviews/{{this._id}}/edit">Edit</a>
