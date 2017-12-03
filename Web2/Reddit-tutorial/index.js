@@ -24,7 +24,7 @@ require('./controllers/posts.js')(app);
 
 
 
-//Routes
+//========================ROUTES
 
 //Index Route
 
