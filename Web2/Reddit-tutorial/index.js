@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //Requires
 require('./controllers/posts.js')(app);
+require('./controllers/comments.js')(app);
 
 
 
@@ -60,13 +61,15 @@ app.get('/posts/new', function (req, res) {
 
 app.get('/posts/:id', function (req, res) {
    // LOOK UP THE POST
-   Post.findById(req.params.id).then((post) => {
+   Post.findById(req.params.id).populate('comments').then((post) => {
      res.render('post-show.handlebars', { post })
    }).catch((err) => {
      console.log(err.message)
    })
  })
 
+
+// SUBREDDIT
  app.get('/r/:subreddit', function(req, res) {
      Post.find({ subreddit: req.params.subreddit }).then((posts) => {
        res.render('posts-index.handlebars', { posts })
