@@ -1,22 +1,12 @@
 const jwt = require('jsonwebtoken')
-const User = require('../models/user')
-require('dotenv').config()
+const User = require('../models/user');
+require('dotenv').config();
 
 module.exports = (app) => {
   // SIGN UP FORM
-  app.get('/sign-up', (req, res, next) => {
-    res.render('sign-up');
-  });
-
-  app.get('/logout', (req, res, next) => {
-      res.clearCookie('nToken');
-      res.redirect('/');
-    });
-
-  // SIGN UP POST
   app.post('/sign-up', (req, res) => {
     // Create User and JWT
-    var user = new User(req.body);
+    const user = new User(req.body);
 
     user.save().then((user) => {
       var token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
@@ -28,4 +18,12 @@ module.exports = (app) => {
     });
   });
 
+  app.get('/sign-up', (req, res) => {
+    res.render('sign-up');
+  });
+
+  app.get('/logout', (req, res) => {
+      res.clearCookie('nToken');
+      res.redirect('/');
+    });
 }

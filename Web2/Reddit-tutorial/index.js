@@ -5,10 +5,10 @@ var mongoose = require('mongoose');
 var path = require('path')
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-const jwt = require('jsonwebtoken');
+var jwt = require('jsonwebtoken');
 var app = express();
 var Post = require('./models/post');
-var User = require('./models/user');
+const User = require('./models/user');
 
 
 
@@ -20,21 +20,21 @@ mongoose.connect('mongodb://localhost/reddit-clone', { useMongoClient: true });
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection Error:'))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-//
-// var checkAuth = function(req, res, next) {
-//     console.log("Checking authentication")
-//
-//     if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
-//         req.user = null
-//     } else {
-//         var token = req.cookies.nToken
-//         var decodedToken = jwt.decode(token, { complete: true }) || {}
-//         req.user = decodedToken.payload
-//     }
-//     next()
-// }
-//
-// app.use(checkAuth)
+
+var checkAuth = (req, res, next) => {
+  console.log("Checking authentication");
+  if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
+    req.user = null;
+  } else {
+    var token = req.cookies.nToken;
+    var decodedToken = jwt.decode(token, { complete: true }) || {};
+    req.user = decodedToken.payload;
+  }
+
+  next()
+}
+
+app.use(checkAuth);
 
 
 
@@ -58,18 +58,17 @@ require('./controllers/auth.js')(app)
 // })
 
 app.get('/', function (req, res) {
+
+    var currentUser = req.user;
+
     Post.find({}).then((posts) => {
-      res.render('posts-index.handlebars', { posts })
+      res.render('posts-index.handlebars', { posts, currentUser })
       console.log(req.cookies);
     }).catch((err) => {
       console.log(err.message);
     })
 })
 
-//New Form
-app.get('/posts/new', function (req, res) {
-    res.render('posts-new', {})
-})
 
 //Show Post
 
@@ -83,9 +82,12 @@ app.get('/posts/new', function (req, res) {
 //   });
 
 app.get('/posts/:id', function (req, res) {
+
+    var currentUser = req.user;
+
    // LOOK UP THE POST
    Post.findById(req.params.id).populate('comments').then((post) => {
-     res.render('post-show.handlebars', { post })
+     res.render('post-show.handlebars', { post, currentUser })
    }).catch((err) => {
      console.log(err.message)
    })
@@ -94,8 +96,11 @@ app.get('/posts/:id', function (req, res) {
 
 // SUBREDDIT
  app.get('/r/:subreddit', function(req, res) {
+
+     var currentUser = req.user
+
      Post.find({ subreddit: req.params.subreddit }).then((posts) => {
-       res.render('posts-index.handlebars', { posts })
+       res.render('posts-index.handlebars', { posts, currentUser })
      }).catch((err) => {
        console.log(err)
      })
@@ -114,13 +119,13 @@ app.post('/login', (req, res) => {
   User.findOne({ username }, 'username password').then((user) => {
     if (!user) {
       // User not found
-      return res.status(401).send({ message: 'Wrong Username or Password' });
+      return res.status(401).send({ message: 'Wrong Username' });
     }
     // Check the password
     user.comparePassword(password, (err, isMatch) => {
       if (!isMatch) {
         // Password does not match
-        return res.status(401).send({ message: "Wrong Username or password"});
+        return res.status(401).send({ message: "Wrong Password"});
       }
       // Create a token
       const token = jwt.sign(

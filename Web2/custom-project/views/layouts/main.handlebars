@@ -16,10 +16,6 @@
           </a>
         </div>
 
-        <div class="pull-right">
-          <a href="/games/new" class="btn btn-success navbar-btn">Add Game</a>
-        </div>
-
         <div class="pull-left">
           <a href="/favs" class="btn btn-default navbar-btn">Favorite</a>
         </div>
@@ -35,9 +31,15 @@
       </div>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/login">Login</a></li>
-        <li><a href="/logout">Logout</a></li>
-        <li><a href="/sign-up">Sign Up</a></li>
+          {{#if currentUser}}
+            <li><a href="/logout">Logout</a></li>
+            <div class="pull-right">
+              <a href="/games/new" class="btn btn-success navbar-btn">Add Game</a>
+            </div>
+          {{else}}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/sign-up">Sign Up</a></li>
+          {{/if}}
       </ul>
 
     </nav>
