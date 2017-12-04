@@ -1,0 +1,26 @@
+<h1>Games</h1>
+
+<div class="row">
+  {{#each games}}
+      <div class="col-sm-4">
+
+        <li class="list-group-item">
+          <a href="/games/{{this._id}}">
+            <h4><b><legend>{{this.title}}</legend></b></h4>
+          </a>
+            <h4><b>Description</b> <h5><small>{{this.description}}</small></h5></h4>
+            <h4> <b>Score - </b> {{this.rating}}</h4>
+            <div class="text-right"><a href="/n/{{this.console}}">{{this.console}}</a></div>
+        </li>
+
+        <!-- <a href="/games/{{this._id}}/edit" class="btn btn-info">Edit Game</a>
+
+        <p>
+          <form method="POST" action="/games/{{this._id}}?_method=DELETE">
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        </p> -->
+      </div>
+
+  {{/each}}
+</div>

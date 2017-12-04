@@ -8,10 +8,46 @@
 </head>
 <body>
 
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">
+            Game List
+          </a>
+        </div>
+
+        <div class="pull-right">
+          <a href="/games/new" class="btn btn-success navbar-btn">Add Game</a>
+        </div>
+
+        <div class="pull-left">
+          <a href="/favs" class="btn btn-default navbar-btn">Favorite</a>
+        </div>
+
+        <div class="pull-left">
+          <a href="/" class="btn btn-default navbar-btn">Complete</a>
+        </div>
+
+        <div class="pull-left">
+          <a href="/" class="btn btn-default navbar-btn">On-Hold</a>
+        </div>
+
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/login">Login</a></li>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/sign-up">Sign Up</a></li>
+      </ul>
+
+    </nav>
+
+
+
     <div class="container">
         {{{body}}}
     </div>
-    
+
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 

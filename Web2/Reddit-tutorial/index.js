@@ -2,9 +2,10 @@ require('dotenv').config();
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var mongoose = require('mongoose');
+var path = require('path')
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 var app = express();
 var Post = require('./models/post');
 var User = require('./models/user');
@@ -12,28 +13,28 @@ var User = require('./models/user');
 
 
 // Middlewares
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 mongoose.Promise = global.Promise
 mongoose.connect('mongodb://localhost/reddit-clone', { useMongoClient: true });
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection Error:'))
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-
-var checkAuth = function(req, res, next) {
-    console.log("Checking authentication")
-
-    if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
-        req.user = null
-    } else {
-        var token = req.cookies.nToken
-        var decodedToken = jwt.decode(token, { complete: true }) || {}
-        req.user = decodedToken.payload
-    }
-    next()
-}
-
-app.use(checkAuth)
+//
+// var checkAuth = function(req, res, next) {
+//     console.log("Checking authentication")
+//
+//     if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
+//         req.user = null
+//     } else {
+//         var token = req.cookies.nToken
+//         var decodedToken = jwt.decode(token, { complete: true }) || {}
+//         req.user = decodedToken.payload
+//     }
+//     next()
+// }
+//
+// app.use(checkAuth)
 
 
 
@@ -98,12 +99,6 @@ app.get('/posts/:id', function (req, res) {
      }).catch((err) => {
        console.log(err)
      })
-  });
-
-//logout
-app.get('/logout', (req, res) => {
-    res.clearCookie('nToken');
-    res.redirect('/');
   });
 
 //Login Form
