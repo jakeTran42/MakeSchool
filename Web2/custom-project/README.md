@@ -33,3 +33,15 @@
 | 8  | Show  | POST  | /Users/:postId/comments  | Creating New Comments  |
 | 9  | New  | GET  | /Users/:id/game/new  | New Game form  |
 | 10  | Show  | POST  | /Users/:id/games  | Adding new games to user account  |
+
+
+
+## TODO
+
+1. Add Favorites/Game Statuses
+2. Add comments
+3. Associate Ratings (Maybe popular game List?) Similar to Upvote
+3. New Release games, Year it was released and Game System as well as GENRE
+4. Set it so only Admin can add game while user can fav, status, comment, rate. (Regular User cannot add game)
+5. Upload Picture
+6. Add Edit/Delete Button to user so they can edit personal comment or Delete/Edit from favorites.
