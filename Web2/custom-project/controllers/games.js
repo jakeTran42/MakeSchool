@@ -6,17 +6,18 @@ module.exports = (app) => {
   app.post('/games', (req, res) => {
       if (req.user) {
           // INSTANTIATE INSTANCE OF POST MODEL
-          var game = new Game(req.body);
+          let game = new Game(req.body);
           game.author = req.user._id
 
-          game.save().then((post) => {
+          game.save().then((game) => {
             return User.findById(req.user._id)
           }).then((user) => {
             user.games.unshift(game);
-            user.save();
+            return user.save();
+        }).then((user) => {
             // REDIRECT TO THE NEW POST
-            res.redirect('/games/'+ post._id)
-          }).catch((err) => {
+            res.redirect('/games/'+ game._id)
+        }).catch((err) => {
             console.log(err.message);
           });
       } else {

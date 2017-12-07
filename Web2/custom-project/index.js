@@ -8,6 +8,7 @@ var jwt = require('jsonwebtoken');
 var app = express()
 var Game = require('./models/game');
 const User = require('./models/user');
+// const unirest = require()
 
 //MIDDLEWARES
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -122,3 +123,14 @@ app.get('/n/:console', function(req, res) {
 app.listen(3000, function () {
   console.log('Portfolio App listening on port 3000!')
 })
+
+
+/*
+// These code snippets use an open-source library. http://unirest.io/nodejs
+unirest.get("https://ahmedakhan-game-review-information-v1.p.mashape.com/api/v1/information?console=xbox+360&game_name=call+of+duty+black+ops")
+.header("X-Mashape-Key", "1Ag38Os2Uymsh8Bj74jdlQDBks42p1NTlETjsnn8mBCoOA3tDg")
+.header("Accept", "application/json")
+.end(function (result) {
+  console.log(result.status, result.headers, result.body);
+});
+*/
