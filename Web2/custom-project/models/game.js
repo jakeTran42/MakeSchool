@@ -9,6 +9,7 @@ const GameSchema = new Schema({
   description:    { type: String, required: true },
   remark:         { type: String },
   rating:         { type: Number, required: true },
+  comments:       [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
 
   // category:       { type: String },
   console:        { type: String, required: true },

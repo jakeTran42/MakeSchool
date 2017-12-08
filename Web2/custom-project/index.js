@@ -35,6 +35,7 @@ app.use(checkAuth);
 
 
 require('./controllers/games.js')(app);
+require('./controllers/comments.js')(app);
 require('./controllers/auth.js')(app);
 
 
@@ -54,17 +55,6 @@ app.get('/', function(req, res) {
   })
 })
 
-app.get('/games/:id', function (req, res) {
-
-    var currentUser = req.user;
-
-   // LOOK UP THE POST
-   Game.findById(req.params.id).then((game) => {
-     res.render('game-show', { game, currentUser })
-   }).catch((err) => {
-     console.log(err.message)
-   })
- })
 
 app.get('/n/:console', function(req, res) {
 

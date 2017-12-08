@@ -21,10 +21,10 @@ module.exports = (app) => {
             console.log(err.message);
           });
       } else {
+          res.redirect('/login')
           return res.status(401);
       }
   });
-
 
   app.get('/games/new', function (req, res) {
 
@@ -32,4 +32,22 @@ module.exports = (app) => {
 
       res.render('games-new', {currentUser: currentUser});
    })
+
+  app.get('/games/:id', function (req, res) {
+
+      var currentUser = req.user;
+
+     // LOOK UP THE POST
+     Game.findById(req.params.id).populate('author').populate('comments').then((game) => {
+       res.render('game-show', { game, currentUser })
+     }).catch((err) => {
+       console.log(err.message)
+     })
+   })
+
+   // app.delete('/games/:id', function (req, res) {
+   //      Game.findByIdAndRemove(req.params.id, function (err) {
+   //          res.redirect('/')
+   //      })
+   //  })
 };

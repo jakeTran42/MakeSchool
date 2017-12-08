@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-inverse" role="navigation">
+    <nav class="navbar navbar-inverse fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="/">
@@ -17,20 +17,27 @@
         </div>
 
         <div class="pull-left">
-          <a href="/favs" class="btn btn-default navbar-btn">Favorite</a>
+          <a href="/favs" class="btn btn-default navbar-btn" style="margin-right: 10px">Favorite</a>
         </div>
 
         <div class="pull-left">
-          <a href="/" class="btn btn-default navbar-btn">Complete</a>
+          <a href="/" class="btn btn-default navbar-btn" style="margin-right: 10px">Complete</a>
         </div>
 
         <div class="pull-left">
-          <a href="/" class="btn btn-default navbar-btn">On-Hold</a>
+          <a href="/" class="btn btn-default navbar-btn" style="margin-right: 10px">On-Hold</a>
         </div>
+
+        <!-- <form method="GET" action="/search"class="form-inline">
+            <div class="pull-right">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="term" value="{{term}}">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </div>
+        </form> -->
 
       </div>
 
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-pull-left">
           {{#if currentUser}}
             <li><a href="/logout">Logout</a></li>
             <div class="pull-right">

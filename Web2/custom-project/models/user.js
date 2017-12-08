@@ -8,6 +8,7 @@ const UserSchema = new Schema({
     password        : { type: String, select: false },
     username        : { type: String, required: true },
     games           : [{ type: Schema.Types.ObjectId, ref: 'Game' }]
+    // comments        : [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
 });
 
 // Must use function here! ES6 => functions do not bind this!

@@ -21,4 +21,5 @@ module.exports = (app) => {
   app.get('/sign-up', (req, res) => {
     res.render('sign-up');
   });
+
 }
