@@ -15,7 +15,7 @@
 ## RESOURCES
 
  1. Users
- 2. Favorites
+ 2. Category
  3. Comments
  4. Rating
 
@@ -28,7 +28,6 @@
 | 3  | Show  | POST  | /Users/signin  | User Can Sign In  |
 | 4  | Show  | GET  | /sign-up  | User See Sign-up Form  |
 | 5  | New  | POST  | /Users/sign-up  | User Can Sign Up  |
-| 6  | Show  | GET  | /users/:id/favorites | User Can View Their Favorites  |
 | 7  | Show  | GET  | /users/logout  | Logout For Users  |
 | 8  | Show  | POST  | /Users/:postId/comments  | Creating New Comments  |
 | 9  | New  | GET  | /Users/:id/game/new  | New Game form  |
