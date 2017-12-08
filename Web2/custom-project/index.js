@@ -1,5 +1,6 @@
 require('dotenv').config();
 var express = require('express')
+var methodOverride = require('method-override')
 var exphbs  = require('express-handlebars');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
@@ -17,6 +18,7 @@ mongoose.Promise = global.Promise
 mongoose.connect('mongodb://localhost/Web2-custom', { useMongoClient: true });
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection Error:'))
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'))
 app.use(cookieParser());
 
 var checkAuth = (req, res, next) => {
@@ -67,47 +69,24 @@ app.get('/n/:console', function(req, res) {
     })
 });
 
-// LOGOUT
- app.get('/logout', (req, res) => {
-   res.clearCookie('nToken');
-   res.redirect('/');
+app.get('/genre/:genre', function(req, res) {
+
+     var currentUser = req.user;
+
+    Game.find({ genre: req.params.genre }).then((games) => {
+     res.render('games-index', { games, currentUser })
+    }).catch((err) => {
+     console.log(err)
+    })
+});
+
+
+app.delete('/games/:id', function (req, res) {
+     Game.findByIdAndRemove(req.params.id, function (err) {
+         res.redirect('/')
+     })
  });
 
- app.get('/login', (req, res) => {
-    res.render('login');
-  });
-
-  app.post('/login', (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    // Find this user name
-    User.findOne({ username }, 'username password').then((user) => {
-      if (!user) {
-        // User not found
-        return res.status(401).send({ message: 'Wrong Username' });
-      }
-      // Check the password
-      user.comparePassword(password, (err, isMatch) => {
-
-          console.log(password, err, isMatch);
-
-        if (!isMatch) {
-          // Password does not match
-          return res.status(401).send({ message: "Wrong password"});
-        }
-        // Create a token
-        const token = jwt.sign(
-          { _id: user._id, username: user.username }, process.env.SECRET,
-          { expiresIn: "60 days" }
-        );
-        // Set a cookie and redirect to root
-        res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
-        res.redirect('/');
-      });
-    }).catch((err) => {
-      console.log(err);
-    });
-  });
 
 // PORT LISTERNERS
 app.listen(3000, function () {

@@ -16,19 +16,29 @@
 <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
         <!-- <h3>{{game.console}}</h3> -->
-        <h3> <b>Description</b> <h4>{{game.description}}</h4></h3>
-        <h3> <b>Rating - </b> {{game.rating}}</h3>
-        <p>Submitted by: {{game.author.username}}</p>
+        <h3> <b>Description</b> <h5>{{game.description}}</h5></h3>
+        <h3> <b>Submitter's Score - </b> {{game.rating}}</h3>
+        <p>Submitted by {{game.author.username}}</p>
         <div class="w3-container" id="remark">
-            <p> <b>Personal Comment:</b> {{game.remark}}</p>
+            <p> <b>Submitter's Review:</b> {{game.remark}}</p>
         </div>
     </div>
 </div>
 
+{{#if game.author}}
+    <p>
+      <form method="POST" action="/games/{{game._id}}?_method=DELETE">
+      <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+    </p>
+{{else}}
+    <p class="empty">No content</p>
+{{/if}}
+
 <form action="/games/{{game._id}}/comments" method="POST">
     <textarea class='form-control' name="content" placeholder="Comment"></textarea>
     <div class="text-right">
-      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Save</button>
     </div>
 </form>
 

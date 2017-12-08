@@ -54,7 +54,7 @@ module.exports = function(app) {
         res.redirect('login')
     })
     } else {
-        // res.redirect('/login')
+        res.redirect('/login')
         return res.status(401); // UNAUTHORIZED
     }
   });

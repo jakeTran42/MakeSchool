@@ -11,8 +11,8 @@ const GameSchema = new Schema({
   rating:         { type: Number, required: true },
   comments:       [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
 
-  // category:       { type: String },
   console:        { type: String, required: true },
+  genre:          { type: String, required: true },
   author :        { type: Schema.Types.ObjectId, ref: 'User', required: true }
 })
 

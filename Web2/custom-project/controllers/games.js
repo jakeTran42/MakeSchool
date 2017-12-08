@@ -44,10 +44,4 @@ module.exports = (app) => {
        console.log(err.message)
      })
    })
-
-   // app.delete('/games/:id', function (req, res) {
-   //      Game.findByIdAndRemove(req.params.id, function (err) {
-   //          res.redirect('/')
-   //      })
-   //  })
 };
