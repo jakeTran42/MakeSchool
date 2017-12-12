@@ -7,8 +7,13 @@
         .delete-form {
             display: none;
         }
-        .game-show .is-author .delete-form {
+
+        /*.game-show.is-author .delete-form {
             display: block;
+        }*/
+
+        #save-button {
+          margin-top: 10px;
         }
 
 
@@ -34,20 +39,16 @@
         </div>
     </div>
 
-    {{#if currentClass}}
-        <p class="delete-form">
-            <form method="POST" action="/games/{{game._id}}?_method=DELETE">
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-        </p>
-    {{else}}
-        <p>idk</p>
-    {{/if}}
+    <p class="delete-form">
+        <form method="POST" action="/games/{{game._id}}?_method=DELETE">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </p>
 
 
     <form action="/games/{{game._id}}/comments" method="POST">
         <textarea class='form-control' name="content" placeholder="Comment"></textarea>
-        <div class="text-right">
+        <div class="text-right" id="save-button">
           <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Save</button>
         </div>
     </form>

@@ -41,6 +41,7 @@
 
         <ul class="nav navbar-nav navbar-right">
             {{#if currentUser}}
+                <li><a href="#"><span class="glyphicon glyphicon-cog"></span> {{currentUser.username}} </a></li>
                 <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 <!-- <li><a href="/logout">Logout</a></li> -->
               <div class="pull-right">
