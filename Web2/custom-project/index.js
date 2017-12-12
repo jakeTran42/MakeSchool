@@ -81,10 +81,23 @@ app.get('/genre/:genre', function(req, res) {
 });
 
 
-app.delete('/games/:id', function (req, res) {
-     Game.findByIdAndRemove(req.params.id, function (err) {
-         res.redirect('/')
-     })
+app.delete('/games/:id', function(req, res) {
+    // is this user logged ?
+    if (!req.user) {
+        // return and respond 401 maybe redirect
+        res.redirect('/login')
+    }
+    // does this user own this post ?
+    Game.findOneAndRemove({ _id: req.params.id, author: req.user }).then((game) => {
+        res.redirect('/')
+    }).catch((err) => {
+        console.log(err.message);
+    })
+
+    // find post by id and remove
+    // Game.findByIdAndRemove(req.params.id, function (err) {
+    //     res.redirect('/')
+    // })
  });
 
 
