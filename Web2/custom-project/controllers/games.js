@@ -2,6 +2,7 @@ const Game = require('../models/game')
 const User = require('../models/user')
 
 module.exports = (app) => {
+
   // CREATE
   app.post('/games', (req, res) => {
       if (req.user) {
@@ -37,22 +38,26 @@ module.exports = (app) => {
   app.get('/games/:id', function (req, res) {
 
       var currentUser = req.user;
-      var currentAuthor = Game.author;
 
      // LOOK UP THE POST
      Game.findById(req.params.id).populate('author').populate('comments').then((game) => {
+         let currentClass = ""
+         if (game.author && currentUser) {
+             var currentAuthor = game.author.username;
+             currentClass = currentUser.username === currentAuthor ? "is-author" : "";
+         }
 
-          // const currentClass = x = (currentUser, currentAuthor) => {
-          //   if (currentUser === currentAuthor) {
-          //     return 'is-author';
-          //   } else {
-          //     return 'nil';
-          //   }
-          // };
+         // let currentAuthor = game.author.username;
+         //
+         // if (currentUser) {
+         //     var currentUsername = currentUser.username
+         // }
+         // const currentClass = (currentUsername === currentAuthor ? "is-author" : "nil");
+         //
+         // console.log('currentUser:' + currentUser);
+         // console.log('currentAuthor: ' + Game.author);
+         // console.log('current class is: ' + currentClass);
 
-         const currentClass = (currentUser === currentAuthor ? "is-author" : "nil");
-         console.log('current class is: ' + currentClass)
-         
          res.render('game-show', { game, currentUser, currentClass })
        }).catch((err) => {
          console.log(err.message)

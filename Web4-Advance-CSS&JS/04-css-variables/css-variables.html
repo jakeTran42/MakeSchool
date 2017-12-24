@@ -1,0 +1,53 @@
+<div id="box" class="box"></div>
+<style>
+  :root {
+    --mouse-x;
+    --mouse-y;
+    --drag;
+    --font: Helvetica;
+    --border: 3px solid #000;
+  }
+  
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    transform-origin: -50%;
+    transform: translate(calc(var(--mouse-x) * 1px), calc(var(--mouse-y) * 1px));
+    transition: 100ms;
+  }
+</style>
+<script>
+  var docStyle = document.documentElement.style;
+  var box = document.getElementById("box");
+  var isDrag = false;
+  var boxX = 0;
+  var boxY = 0;
+  
+  box.onmousedown = function(e) {
+    box.style.border = "solid 3px #000";
+    isDrag = true;
+    docStyle.setProperty('--drag', true);
+    update(0);
+  }
+  
+  window.onmouseup = function(e) {
+    box.style.border = 'none';
+    isDrag = false;
+    docStyle.setProperty('--drag', false);
+  }
+  
+  window.onmousemove = function(e) {
+    boxX = e.clientX;
+    boxY = e.clientY;
+  }
+  
+  function update(dt) {
+    docStyle.setProperty('--mouse-x', boxX);
+    docStyle.setProperty('--mouse-y', boxY);
+    
+    if (isDrag) {
+      requestAnimationFrame(update);
+    }
+  }
+</script>

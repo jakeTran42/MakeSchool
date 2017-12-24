@@ -88,7 +88,7 @@ app.delete('/games/:id', function(req, res) {
         res.redirect('/login')
     }
     // does this user own this post ?
-    Game.findOneAndRemove({ _id: req.params.id, author: req.user }).then((game) => {
+    Game.findOneAndRemove( { _id: req.params.id, author: req.user } ).then((game) => {
         res.redirect('/')
     }).catch((err) => {
         console.log(err.message);

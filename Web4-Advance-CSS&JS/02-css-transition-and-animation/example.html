@@ -1,0 +1,715 @@
+<div class="container">
+  <!-- Simple Hover -->
+  <div class="a"></div>
+  
+  <!-- Nested Hover -->
+  <div class="b">
+    <div></div>
+  </div>
+  
+  <!-- Nested Hover problem -->
+  <div class="b2">
+    <div></div>
+  </div>
+
+  <!-- Better nested hover -->
+  <div class="c">
+    <div></div>
+  </div>
+  
+  <!-- Overflow -->
+  <div class="d">
+    <div>Hello</div>
+  </div>
+  
+  <!-- Overflow 2 -->
+  <div class="e">
+    <div>
+      <div>Hello</div>
+      <div>Hello</div>
+    </div>
+  </div>
+  
+  <!-- Active -->
+  <div class="f">
+    <div>Click</div>
+  </div>
+  
+  <!-- Switch hover -->
+  <div class="g">
+    <div></div>
+  </div>
+  
+  <!-- Switch with Click -->
+  <div id="switch-1" class="switch">
+    <div></div>
+  </div>
+  
+  <!-- Keyframe from to -->
+  <div class="h">
+    <div></div>
+  </div>
+  
+  <!-- Keyframe percent -->
+  <div class="i">
+    <div></div>
+  </div>
+  
+  <!-- Keyframe percent 2 -->
+  <div class="j">
+    <div></div>
+  </div>
+  
+  
+  <!-- Hamburger X -->
+  <div class="k">
+    <div></div>
+    <div></div>
+  </div>
+
+  <style>
+    .k { 
+      border: solid 1px black;
+      width: 100px;
+      height: 100px;
+      transition: 200ms;
+    }
+    .k > div {
+      width: 60px;
+      height: 10px;
+      background-color: black;
+      position: absolute;
+    }
+    .k > div:nth-child(1) {
+      transform: translate(20px, 35px) rotate(0);
+      transition: 200ms;
+    }
+    .k > div:nth-child(2) {
+      transform: translate(20px, 55px) rotate(0);
+      transition: 200ms;
+    }
+    
+    .k:hover {
+      background-color: black;
+    }
+    
+    .k:hover > div {
+      background-color: white;
+    }
+    
+    .k:hover > div:nth-child(1) {
+      transform: translate(20px, 45px) rotate(45deg);
+    }
+    .k:hover > div:nth-child(2) {
+      transform: translate(20px, 45px) rotate(-45deg);
+    }
+    
+  </style>
+  
+  
+  
+  <!-- Hamburger X 2 -->
+  <div class="l">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <style>
+    .l { 
+      border: solid 1px black;
+      width: 100px;
+      height: 100px;
+      transition: 200ms;
+    }
+    .l > div {
+      width: 60px;
+      height: 10px;
+      background-color: black;
+      position: absolute;
+    }
+    .l > div:nth-child(1) {
+      transform: translate(20px, 25px) rotate(0);
+      transition: 200ms;
+    }
+    .l > div:nth-child(2) {
+      opacity: 1;
+      transform: scale(1, 1) translate(20px, 45px) rotate(0);
+      transition: 200ms;
+    }
+    
+    .l > div:nth-child(3) {
+      transform: translate(20px, 65px) rotate(0);
+      transition: 200ms;
+    }
+    
+    .l:hover {
+      background-color: black;
+    }
+    
+    .l:hover > div {
+      background-color: white;
+    }
+    
+    .l:hover > div:nth-child(1) {
+      transform: translate(20px, 45px) rotate(45deg);
+    }
+    .l:hover > div:nth-child(2) {
+      opacity: 0;
+      transform: scale(0, 1) translate(20px, 45px) rotate(0);
+    }
+    
+    .l:hover > div:nth-child(3) {
+      transform: translate(20px, 45px) rotate(-45deg);
+    }
+    
+  </style>
+  
+  
+  <!-- Hamburger X 4 -->
+  <div class="m">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <style>
+    .m { 
+      border: solid 1px black;
+      width: 100px;
+      height: 100px;
+      transition: 200ms;
+    }
+    .m > div {
+      width: 60px;
+      height: 10px;
+      background-color: black;
+      position: absolute;
+    }
+    .m > div:nth-child(1) {
+      transform: translate(20px, 25px) rotate(0);
+      transition: 200ms;
+    }
+    .m > div:nth-child(2) {
+      opacity: 1;
+      transform: scale(1, 1) translate(20px, 45px) rotate(0);
+      transition: 200ms;
+    }
+    
+    .m > div:nth-child(3) {
+      transform: translate(20px, 65px) rotate(0);
+      transition: 200ms;
+    }
+    
+    .m:hover {
+      background-color: black;
+    }
+    
+    .m:hover > div {
+      background-color: white;
+    }
+    
+    .m:hover > div:nth-child(1) {
+      width: 53px;
+      transform: translate(10px, 30px) rotate(-45deg);
+    }
+    .m:hover > div:nth-child(2) {
+      transform: translate(20px, 45px) rotate(0);
+    }
+    
+    .m:hover > div:nth-child(3) {
+      width: 53px;
+      transform: translate(10px, 60px) rotate(45deg);
+    }
+    
+  </style>
+  
+  
+  
+  
+  
+  <!-- Hamburger X 4 -->
+  <div class="n">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <style>
+    .n { 
+      border: solid 1px black;
+      width: 100px;
+      height: 100px;
+      transition: 200ms;
+    }
+    .n > div {
+      width: 60px;
+      height: 10px;
+      background-color: black;
+      position: absolute;
+    }
+    .n > div:nth-child(1) {
+      transform: translate(20px, 25px) rotate(0);
+      transition: 200ms;
+    }
+    .n > div:nth-child(2) {
+      border: none;
+      border-radius: 0;
+      transform: translate(20px, 45px);
+      transition: 200ms;
+    }
+    
+    .n > div:nth-child(3) {
+      transform: translate(20px, 65px) rotate(0);
+      transition: 200ms;
+    }
+    
+    .n:hover {
+      background-color: black;
+    }
+    
+    .n:hover > div {
+      background-color: white;
+    }
+    
+    .n:hover > div:nth-child(1) {
+      width: 50px;
+      transform: translate(25px, 45px) rotate(45deg);
+    }
+    .n:hover > div:nth-child(2) {
+      width: 60px;
+      height: 60px;
+      background-color: transparent;
+      border: 10px solid white;
+      border-radius: 50%;
+      transform: translate(10px, 10px);
+    }
+    
+    .n:hover > div:nth-child(3) {
+      width: 50px;
+      transform: translate(25px, 45px) rotate(-45deg);
+    }
+    
+  </style>
+  
+</div>
+
+<style>
+  
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+  }
+  
+  /* Simple Hover */
+  .a {
+    width: 100px;
+    height: 100px;
+    background-color: #f00;
+    transition: 400ms;
+  }
+  
+  .a:hover {
+    transform: scale(1.25) rotate(12deg);
+  }
+  
+  /* Nested Hover */
+  .b {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    position: relative;
+  }
+  
+  .b > div {
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    transition: 400ms;
+  }
+  
+  .b > div:hover {
+    transform: scale(1.25) rotate(12deg);
+  }
+  
+  /* Problem hover */
+  .b2 {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    position: relative;
+  }
+  
+  .b2 > div {
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    transition: 400ms;
+  }
+  
+  .b2 > div:hover {
+    transform: scale(.85) rotate(15deg);
+  }
+  
+  /* Better Nested Hover */
+  .c {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    position: relative;
+  }
+  
+  .c > div {
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    transition: 400ms;
+  }
+  
+  .c:hover > div {
+    transform: scale(1.25) rotate(12deg);
+  }
+  
+  /* Overflow */
+  .d {
+    width: 100px;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #000;
+  }
+  
+  .d > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 40px;
+    left: 0;
+    top: 40px;
+    background-color: red;
+    transition: 200ms;
+  }
+  
+  .d:hover > div {
+    top: 0;
+  }
+  
+  /* Overflow 2 */
+  .e {
+    width: 100px;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #000;
+  }
+  
+  .e > div {
+    position: absolute;
+    width: 100%;
+    height: 200%;
+    text-align: center;
+    line-height: 40px;
+    left: 0;
+    top: 0;
+    transition: 200ms;
+  }
+  
+  .e:hover > div {
+    top: -40px;
+  }
+  
+  .e > div > div:first-child {
+    color: black;
+  }
+  
+  .e > div > div:last-child {
+    color: white;
+    background-color: red;
+  }
+  
+  
+  /* Active */
+  .f {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    position: relative;
+  }
+  
+  .f > div {
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    transition: 400ms;
+    text-align: center;
+    line-height: 60px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .f:hover > div {
+    transform: scale(1.25) rotate(12deg);
+  }
+  
+  .f:active > div {
+    background-color: blue;
+  }
+  
+  /* Switch Hover */
+  .g {
+    width: 100px;
+    height: 60px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    background-color: #efefef;
+    position: relative;
+    transition: 200ms;
+    cursor: pointer;
+  }
+  
+  .g > div {
+    width: 56px;
+    height: 56px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 2px;
+    position: absolute;
+    left: 0;
+    transition: 200ms
+  }
+  
+  .g:hover {
+    background-color: #07e207;
+  }
+  
+  .g:hover > div {
+    left: 40px;
+  }
+  
+  /* Switch Click */
+  .switch {
+    width: 100px;
+    height: 60px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    background-color: #efefef;
+    position: relative;
+    transition: 200ms;
+    cursor: pointer;
+  }
+  
+  .switch > div {
+    width: 56px;
+    height: 56px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 2px;
+    position: absolute;
+    left: 0;
+    transition: 200ms
+  }
+  
+  .switch.on {
+    background-color: #07e207;
+  }
+  
+  .switch.on > div {
+    left: 40px;
+  }
+  
+  
+  /* Keyframes from to */
+  .h {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    position: relative;
+  }
+  
+  .h > div {
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+  }
+  
+  .h > div {
+    animation-name: animation-1;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+  }
+  
+  @keyframes animation-1 {
+    from {
+      background-color: red;
+      transform: rotate(0) scale(1);
+    }
+    
+    to {
+      background-color: blue;
+      transform: rotate(12deg) scale(1.25);
+    }
+  }
+  
+  
+  /* Keyframes percent */
+  .i {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    position: relative;
+  }
+  
+  .i > div {
+    width: 1px;
+    height: 1px;
+    background-color: red;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+  }
+  
+  .i > div {
+    animation-name: animation-2;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+  }
+  
+  @keyframes animation-2 {
+    0% {
+      background-color: red;
+      top: 50px;
+      left: 50px;
+      height: 1px;
+      width: 1px;
+    }
+    
+    25% {
+      height: 100px;
+      width: 1px;
+      top: 0px;
+      left: 50px;
+    }
+    
+    35% {
+      height: 100px;
+      width: 1px;
+      top: 0px;
+      left: 50px;
+    }
+    
+    65% {
+      width: 100px;
+      height: 100px;
+      top: 0;
+      left: 0;
+    }
+    
+    75% {
+      width: 100px;
+      height: 100px;
+      top: 0;
+      left: 0;
+    }
+    
+    75% {
+      width: 100px;
+      height: 1px;
+      top: 50px;
+      left: 0;
+    }
+    
+    100% {
+      width: 100px;
+      height: 1px;
+      top: 50px;
+      left: 0;
+    }
+  }
+  
+  
+  /* Keyframes percent 2 */
+  .j {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    position: relative;
+  }
+  
+  .j > div {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  .j > div {
+    animation-name: animation-3;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+  }
+  
+  @keyframes animation-3 {
+    0% {
+      transform: rotate(0) scale(0);
+    }
+    
+    25% {
+      transform: rotate(0) scale(0.25);
+    }
+    
+    50% {
+      transform: rotate(0) scale(0.25);
+    }
+    
+    75% {
+      transform: rotate(360deg) scale(0.25);
+    }
+    
+    100% {
+      transform: rotate(360deg) scale(1);
+    }
+  }
+  
+</style>
+
+
+<script>
+  // Use minimal JS to add and remove a class
+  const switch_1 = document.getElementById('switch-1')
+  switch_1.onclick = function(e) {
+    this.classList.toggle('on')
+  }
+  
+  var x = 0;
+  var dx = 100;
+  
+  for (var i = 0; i < 10; i++) {
+    x -= (x - dx) * 0.5
+    console.log(x);
+  }
+  
+</script>
