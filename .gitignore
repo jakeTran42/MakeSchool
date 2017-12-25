@@ -3,4 +3,3 @@
 ### macOS ###
 *.DS_Store
 _config.yml
-*package-lock.json
