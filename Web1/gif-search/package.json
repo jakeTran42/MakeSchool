@@ -11,6 +11,6 @@
   "dependencies": {
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
-    "giphy-api": "file:node_modules/giphy-api"
+    "giphy-api": "^1.2.7"
   }
 }
