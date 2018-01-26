@@ -173,10 +173,70 @@ const Pub = Sequelize.define('pub', {
 })
 ```
 
+## Queries and Commands
 
-## ORM/Sequelize Challenges - Famos Amos Pet Emporium (Starter Project)
+Sequelize (or any ORM) translates between an application language (.js in our case) and SQL. That means that the library creates a series of functions that themselves write SQL queries. e.g. `findAll()`, `where()`, and `
 
-**GOAL: Install PostgreSQL, `sequlize-cli`**
+```js
+User.findAll({
+  attributes: ['foo', 'bar']
+});
+
+SELECT foo, bar 
+FROM User
+
+Post.findAll({
+  where: {
+    authorId: 2
+  }
+});
+
+SELECT * 
+FROM post 
+WHERE authorId = 2
+
+Post.destroy({
+  where: {
+    status: 'inactive'
+  }
+});
+
+DELETE 
+FROM post 
+WHERE status = 'inactive';
+
+Post.findAll({
+  where: {
+    authorId: {
+      [Op.or]: [12, 13]
+    }
+  }
+});
+SELECT * 
+FROM post 
+WHERE authorId = 12 OR authorId = 13;
+
+Post.create(req.body).then(post => {
+		res.send({ post: post });
+	});
+ 
+INSERT INTO Post (COLUMNS) 
+VALUES (VALUES)
+```
+
+
+## ORM/Sequelize Challenges
+
+**GOAL: Translate between SQL and Sequelize.js** 
+
+Open a .js file and write the SQL and Sequelize commands for the following queries or commands:
+
+* Delete an Article
+* Post an Article
+* Return all Comments
+* Return all Articles ordered by createdAt
+
+**GOAL: Install PostgreSQL, `sequelize-cli`**
 
 1. Because PostgreSQL is a very popular SQL database and used by default in Heroku, we'll be using this database locally and remotely. So install that:
 
@@ -196,7 +256,7 @@ const Pub = Sequelize.define('pub', {
 
 Reference the [Getting Started] Docs of Sequelize to complete these challenges.
 
-1. Go to [Famos Amos Pet Emporium](https://github.com/Product-College-Labs/famous-amos) and fork the project and clone your fork down. Add a link to your fork to the [Web 3 Progress Tracker](https://docs.google.com/spreadsheets/d/1jlDyBlRDjLGrA6VOi3JuV-v07vKoEUn1a96FC2CkwBo/edit#gid=0)
+1. Go to [Famous Amos Pet Emporium](https://github.com/Product-College-Labs/famous-amos) and fork the project and clone your fork down. Add a link to your fork to the [Web 3 Progress Tracker](https://docs.google.com/spreadsheets/d/1jlDyBlRDjLGrA6VOi3JuV-v07vKoEUn1a96FC2CkwBo/edit#gid=0)
 1. Now make a new branch called "sequelize". Now add Sequelize and pg to your npm project:
 
    ```bash
@@ -220,7 +280,7 @@ Reference the [Getting Started] Docs of Sequelize to complete these challenges.
    ```bash
      $ sequelize init
    ```
-(Or use the [Postgres.app](https://postgresapp.com/documentation/gui-tools.html) to automatically start your local postgres database when you start you computer)
+   (Or use the [Postgres.app](https://postgresapp.com/documentation/gui-tools.html) to automatically start your local postgres database when you start you computer)
 
 1. Create a model for `Pet` and look in the `json/pets.json` file for the model's attributes. Use the following code as a sample to make your own new model and migration.
 
@@ -231,7 +291,7 @@ Reference the [Getting Started] Docs of Sequelize to complete these challenges.
 1. Create a database using PostgreSQL. 
 
    ```bash
-     $ createdb famos-amos
+     $ createdb famous-amos-development
    ```
 
 1. Next, you'll have to connect your app to your development database in the `server.js` file. Use the Getting Started documentation to find the code to connect to your databse. (Hint - remember ot use the "dialect" `postgres`, and change the username to the username of your computer.)
@@ -252,15 +312,16 @@ Reference the [Getting Started] Docs of Sequelize to complete these challenges.
    ```
 
 1. Finally, begin converting each of the `pets` controller routes to use Sequelize for crudding your core resource.
-  1. #new
-  1. #create
-  1. #show
-  1. #index
-  1. #edit
-  1. #update
+   1. #new
+   1. #create
+   1. #show
+   1. #index
+   1. #edit
+   1. #update
 
 ## Stretch Challenges
 
+1. Create a seed (sort of like a migration), and use the `json` files to seed the database.
 1. Add two `weight`, `color` columns to the pets table and model. (hint generate a new migration and run it to add the columns)
 1. Change the attribute `species` to `breed`. (hint generate a new migration to change the column name)
 

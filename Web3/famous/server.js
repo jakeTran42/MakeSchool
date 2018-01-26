@@ -18,9 +18,9 @@ const purchases = require('./routes/purchases');
 const app = express();
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('famous-amos', 'Insui', 'secret', {
-  host: 'localhost',
-  dialect: 'postgres'
+const sequelize = new Sequelize('famous-amos-development', 'Insui', process.env.PASS, {
+    host: 'localhost',
+    dialect: 'postgres'
 });
 
 // view engine setup
@@ -43,6 +43,15 @@ app.use('/pets', pets);
 app.use('/pets/:petId/comments', comments);
 app.use(purchases);
 
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   const err = new Error('Not Found');
@@ -60,14 +69,5 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.render('error');
 });
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
 
 module.exports = app;
