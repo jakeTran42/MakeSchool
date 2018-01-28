@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-let pets = require('../json/pets')
+// let pets = require('../json/pets')
 let comments = require('../json/comments')
+// const db = required('../db/models')
 const Pet = require('../db/models').Pet
 const Comment = require('../db/models').Comment
 
@@ -19,7 +20,11 @@ router.get('/new', (req, res) => {
 
 // SHOW
 router.get('/:id', (req, res) => {
-  res.render('pets-show', { pet: pets[req.params.id], comments: comments });
+    Pet.findById(req.params.id).then((pet) => {
+        res.render('pets-show', { pet: pet });
+    }).catch((err) => {
+        console.log(err)
+    })
 });
 
 // CREATE
@@ -31,18 +36,34 @@ router.post('/', (req, res) => {
 });
 
 // EDIT
-router.get('/:index/edit', (req, res) => {
-  res.render('pets-edit', { pet: pets[req.params.index]});
+router.get('/:id/edit', (req, res) => {
+    Pet.findById(req.params.id).then((pet) =>{
+        console.log(pet.id)
+        res.render('pets-edit', { pet: pet })
+    })
 });
 
 // UPDATE
-router.put('/:index', (req, res) => {
-  res.redirect(`/pets/${req.params.index}`)
+router.put('/:id', (req, res) => {
+    console.log('Hello')
+    Pet.findById(req.params.id).then((pet) => {
+        pet.update(req.body);
+    }).then(() =>{
+        res.redirect(`/pets/${req.params.id}`)
+    }).catch((err) => {
+        console.log(err)
+    })
 });
 
 // DESTROY
-router.delete('/:index', (req, res) => {
-  res.redirect('/');
+router.delete('/:id', (req, res) => {
+    Pet.findById(req.params.id).then((pet) => {
+        return pet.destroy(pet);
+    }).then(() => {
+        res.redirect('/');
+    }).catch((err) => {
+        console.log(err)
+    })
 });
 
 

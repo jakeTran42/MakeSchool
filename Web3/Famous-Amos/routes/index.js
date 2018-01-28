@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-let pets = require('../json/pets')
+// let pets = require('../json/pets')
 const Pet = require('../db/models').Pet
 
 /* GET home page. */
