@@ -34,4 +34,12 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+//Models
+// db.pet = require('../models/pet.js')(sequelize, Sequelize);
+// db.comment = require('../models/comment.js')(sequelize, Sequelize);
+
+//Relations
+// db.comment.belongsTo(db.pet, {foreignKey: 'PetId'});
+// db.pet.hasMany(db.comment, {foreignKey: 'CommentId'});
+
 module.exports = db;

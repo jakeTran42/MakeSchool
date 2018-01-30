@@ -20,7 +20,11 @@ router.get('/new', (req, res) => {
 
 // SHOW
 router.get('/:id', (req, res) => {
-    Pet.findById(req.params.id).then((pet) => {
+    Pet.findById(req.params.id, {
+        include: {
+            model: Comment
+        }
+    }).then((pet) => {
         res.render('pets-show', { pet: pet });
     }).catch((err) => {
         console.log(err)

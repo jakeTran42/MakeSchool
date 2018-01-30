@@ -17,9 +17,26 @@ const Pets = require('../db/models').Pet
 //     });
 // });
 
+router.post('/', (req,res) => {
+    Comment.create({
+        body: req.body,
+        PetId: req.params.petId
+    }).then(() => {
+        res.redirect(`/pets/${req.params.petId}`);
+    }).catch((err) => {
+        res.send(err)
+    })
+})
+
 // DESTROY
 router.delete('/:index', (req, res) => {
-  res.redirect(`/pets/${req.params.id}`);
+    Comment.destroy({
+        where: { id: req.params.index }
+    }).then(() => {
+        res.redirect(`/pets/${req.params.id}`);
+    }).catch((err) => {
+        res.send(err)
+    })
 });
 
 

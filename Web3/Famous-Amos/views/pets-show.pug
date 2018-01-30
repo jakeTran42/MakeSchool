@@ -13,3 +13,17 @@ block content
             p=pet.description
             .text-right
                 a(href="/pets/" + pet.id + "/edit").btn-link Edit
+            
+            hr
+            small.text-muted Comments for #{pet.name}
+            form(action="/pets/" + pet.id + "/comments" method="POST")
+                .form-group
+                    textarea.form-control(name="body")
+                .text-right
+                    button(type="submit").btn.btn-primary Save Comment
+            each c in pet.Comments
+                p=c.body
+                small.text-right
+                    form(action="/pets/" + pet.id + "/comments/" + c.id + "?_method=DELETE" method="POST")
+                        .text-right
+                            button(type="submit").text-danger Remove
