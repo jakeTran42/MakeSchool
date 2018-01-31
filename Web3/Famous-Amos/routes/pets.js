@@ -34,9 +34,9 @@ router.get('/:id', (req, res) => {
 // CREATE
 router.post('/', (req, res) => {
     // pets.unshift(req.body);
-    body = req.body
-    Pet.create(body)
-    res.redirect('/');
+    Pet.create(req.body).then(() => {
+        res.redirect('/');
+    })
 });
 
 // EDIT

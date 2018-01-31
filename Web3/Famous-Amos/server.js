@@ -15,7 +15,14 @@ const pets = require('./routes/pets');
 const comments = require('./routes/comments');
 const purchases = require('./routes/purchases');
 
+const flash = require('express-flash');
+const session = require('express-session');
 const app = express();
+
+//flash
+app.use(cookieParser('keyboard cat'));
+app.use(session({ cookie: { maxAge: 60000 }}));
+app.use(flash());
 
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize('famous-amos', 'Insui', 'secret', {
