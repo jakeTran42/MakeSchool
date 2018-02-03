@@ -35,6 +35,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     // pets.unshift(req.body);
     Pet.create(req.body).then(() => {
+        req.flash('success', 'Successfully Created pets')
         res.redirect('/');
     })
 });
@@ -53,8 +54,10 @@ router.put('/:id', (req, res) => {
     Pet.findById(req.params.id).then((pet) => {
         pet.update(req.body);
     }).then(() =>{
+        req.flash('success', 'Successfully Update Pet')
         res.redirect(`/pets/${req.params.id}`)
     }).catch((err) => {
+        req.flash('caution', 'Something went wrong')
         console.log(err)
     })
 });
@@ -62,10 +65,12 @@ router.put('/:id', (req, res) => {
 // DESTROY
 router.delete('/:id', (req, res) => {
     Pet.findById(req.params.id).then((pet) => {
-        return pet.destroy(pet);
+        pet.destroy(pet);
     }).then(() => {
+        req.flash('success', 'Successfully Deleted Pet')
         res.redirect('/');
     }).catch((err) => {
+        req.flash('caution', 'Something went wrong')
         console.log(err)
     })
 });

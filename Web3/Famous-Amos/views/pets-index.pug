@@ -1,6 +1,7 @@
 extends layout
 
 block content
+
   .row
     each pet, id in pets
       .col-sm-4.justify-content-center
@@ -12,3 +13,9 @@ block content
             p.card-text= pet.description
             .text-right
                 a.card-link(href="/pets/" + pet.id) View #{pet.name}
+                
+    .row
+      form(action="/" method="GET")  
+          div.btn-group.my-4(role="group")
+          - for (var i = 1; i < pages+1; i++)
+              input.pageBtn(type="submit" name="page" value=i)

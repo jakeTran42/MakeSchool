@@ -18,11 +18,11 @@ block content
             small.text-muted Comments for #{pet.name}
             form(action="/pets/" + pet.id + "/comments" method="POST")
                 .form-group
-                    textarea.form-control(name="body")
+                    textarea.form-control(name="content")
                 .text-right
                     button(type="submit").btn.btn-primary Save Comment
             each c in pet.Comments
-                p=c.body
+                p=c.content
                 small.text-right
                     form(action="/pets/" + pet.id + "/comments/" + c.id + "?_method=DELETE" method="POST")
                         .text-right

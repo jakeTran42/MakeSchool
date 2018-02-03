@@ -3,7 +3,7 @@ const router = express.Router({mergeParams: true});
 
 let comments = require('../json/comments')
 const Comment = require('../db/models').Comment
-const Pets = require('../db/models').Pet
+const Pet = require('../db/models').Pet
 
 // CREATE
 // router.post('/', (req, res) => {
@@ -19,11 +19,13 @@ const Pets = require('../db/models').Pet
 
 router.post('/', (req,res) => {
     Comment.create({
-        body: req.body,
+        content: req.body.content,
         PetId: req.params.petId
     }).then(() => {
+        req.flash('success', 'Comment created');
         res.redirect(`/pets/${req.params.petId}`);
     }).catch((err) => {
+        req.flash("caution", "Cannot Create Comment");
         res.send(err)
     })
 })
@@ -33,11 +35,14 @@ router.delete('/:index', (req, res) => {
     Comment.destroy({
         where: { id: req.params.index }
     }).then(() => {
-        res.redirect(`/pets/${req.params.id}`);
+        req.flash('success', 'Successfully Deleted Comment')
+        res.redirect(`/pets/${req.params.petId}`);
     }).catch((err) => {
+        req.flash('caution', 'Something went wrong while deleting comment')
         res.send(err)
     })
 });
+
 
 
 

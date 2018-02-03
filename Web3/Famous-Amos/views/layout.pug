@@ -12,13 +12,26 @@ html
       button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
         span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav    
+            form(action="/" method="GET")
+                input(type="text" name="search")
+                input(type="hidden" name="page" value="1")
         ul.navbar-nav
           li.nav-item
             a.nav-link(href='/pets/new') New Pet
     
+    
     if messages.info
         div.alert.alert-info
             span=messages.info
+    
+    if messages.caution
+        div.alert.alert-caution
+            span=messages.caution
+    
+    if messages.success
+        div.alert.alert-success
+            span=messages.success
 
     .container
       block content

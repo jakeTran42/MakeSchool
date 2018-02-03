@@ -9,6 +9,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override')
+const paginate = require('express-paginate');
 
 const index = require('./routes/index');
 const pets = require('./routes/pets');
@@ -37,6 +38,9 @@ app.set('view engine', 'pug');
 // override with POST having ?_method=DELETE or ?_method=PUT
 app.use(methodOverride('_method'))
 
+//Pagination MW
+app.use(paginate.middleware(4, 50));
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -55,6 +59,15 @@ app.use((req, res, next) => {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
+});
+
+app.use(function(err, req, res, next) {
+  if(err.status == 404) {
+  //do logging and user-friendly error message display
+    res.redirect('/404.html');
+  } else if (err.status == 500) {
+    res.redirect('/500.html');
+  }
 });
 
 // error handler

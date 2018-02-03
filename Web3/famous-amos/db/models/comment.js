@@ -1,7 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Comment = sequelize.define('Comment', {
-    body: DataTypes.TEXT
+    content: DataTypes.TEXT
+    // PetId: DataTypes.INTEGER
   });
 
   Comment.associate = function(models) {
