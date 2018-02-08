@@ -19,6 +19,10 @@ const purchases = require('./routes/purchases');
 const flash = require('express-flash');
 const session = require('express-session');
 const app = express();
+const sendMail = require('./routes/sendMail');
+
+//Sending email
+// app.use('/api/v1/communicate', sendMail)
 
 //flash
 app.use(cookieParser('keyboard cat'));

@@ -13,7 +13,7 @@ const Comment = require('../db/models').Comment
 // });
 
 router.get('/', (req, res) => {
-    let limit = 3;
+    let limit = 6;
     let offset = 0;
     Pet.findAndCountAll().then((pet) => {
         let page = req.query.page;
@@ -30,17 +30,17 @@ router.get('/', (req, res) => {
         })
     }).catch(function (error) {
         res.status(500).send('Internal Server Error');
+        res.render('/500.html')
     })
 })
 
 router.get('/search', (req, res) => {
     Pet.findAll(
         {
-
         where: {
             name: req.query.name
         }
-    }).then(pets => {
+    }).then((pets) => {
         res.render('pets-index', { pets, name: req.query.name });
     })
 })

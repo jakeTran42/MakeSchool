@@ -13,9 +13,10 @@ html
         span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav    
-            form(action="/" method="GET")
-                input(type="text" name="search")
-                input(type="hidden" name="page" value="1")
+            form(method="GET" action="/search")
+                input(type="text" name="name" value="" placeholder="Pet Name")
+                button(type="submit") Search
+                
         ul.navbar-nav
           li.nav-item
             a.nav-link(href='/pets/new') New Pet

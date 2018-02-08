@@ -43,14 +43,14 @@ router.post('/', (req, res) => {
 // EDIT
 router.get('/:id/edit', (req, res) => {
     Pet.findById(req.params.id).then((pet) =>{
-        console.log(pet.id)
+        // console.log(pet.id)
         res.render('pets-edit', { pet: pet })
     })
 });
 
 // UPDATE
 router.put('/:id', (req, res) => {
-    console.log('Hello')
+    // console.log('Hello')
     Pet.findById(req.params.id).then((pet) => {
         pet.update(req.body);
     }).then(() =>{
