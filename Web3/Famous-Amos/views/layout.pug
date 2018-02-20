@@ -54,16 +54,13 @@ html
         var socket = io.connect();
 
         socket.on('animal_status', function (data) {
-            $('.status').text('Status: ' + data.status);
+            $('.status').html('Status: ' + data.status);
         })
         
         socket.on('timer', function (data) {  
-            $('.counter').html('Time left to buy: ' + data.countdown);
+            $('.counter').html('Time left to buy: ' + data.countdown + ' Seconds');
         });
 
-        $('.reset').click(function() {
-            socket.emit('reset');
-        });
                 
         
 

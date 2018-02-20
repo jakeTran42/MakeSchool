@@ -49,15 +49,15 @@ var io = require('socket.io')(server);
 
 io.on('connection', function (socket) {
     const statuses = ['Pooping', 'Napping', 'Planning Assassination'];
+    var countdown = Math.floor(Math.random() * 1000);
 
     setInterval(function() {
         let randomIndex = Math.floor(Math.random() * 3)
         socket.emit('animal_status', { status: statuses[randomIndex]})
     }, 10000)
 
-    var countdown = 1000;
     setInterval(function() {
-      countdown--;
+      countdown -= 1;
       io.sockets.emit('timer', { countdown: countdown });
     }, 1000);
 
