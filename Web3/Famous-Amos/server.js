@@ -3,6 +3,8 @@ if (!process.env.PORT) {
 }
 
 const express = require('express');
+var http = require('http').Server(express);
+const router = express.Router();
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
@@ -84,6 +86,19 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// Socket message
+// router.get('/pets/:id', function(req,res) {
+//     res.sendFile(__dirname + '/views/layout.pug')
+// });
+//
+// setInterval( function() {
+//     const status = ['Planning World Domination', 'Playing Piano', 'Breeding', 'Eating Cats', 'Filing Taxes']
+//     let randomIndex = Math.floor(Math.random() * 4 )
+//     io.emit('status', { currentStatus: status[randomIndex] });
+//     // console.log(status[randomIndex])
+// }, 5000)
+
 
 sequelize
   .authenticate()
