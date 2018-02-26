@@ -58,7 +58,7 @@ html
         })
         
         socket.on('timer', function (data) {  
-            $('.counter').html('Time left to buy: ' + data.countdown);
+            $('.counter').html('Time left to buy: ' + data.countdown + 'Seconds');
         });
 
         $('.reset').click(function() {
