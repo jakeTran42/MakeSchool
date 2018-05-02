@@ -98,8 +98,8 @@ class Password extends Component {
                     
                 </div>
 
-                <div className='saveBtn'>
-                    <button onClick={(e) => {
+                <div>
+                    <button className='saveBtn' onClick={(e) => {
                         this.props.addPassword(this.state.name, this.state.password, this.state.rating) }}> Save
                     </button>
                 </div>

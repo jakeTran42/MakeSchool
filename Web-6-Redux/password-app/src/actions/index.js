@@ -9,16 +9,16 @@ export const addPassword = (name, password, rating) => {
     }
   }
   
-  export const deletePassword = (index) => {
-    return {
-      type: DELETE_PASSWORD,
-      payload: { index }
-    }
+export const deletePassword = (index) => {
+  return {
+    type: DELETE_PASSWORD,
+    payload: { index }
   }
-  
-  export const editPassword = (index, name, password) => {
-    return {
-      type: EDIT_PASSWORD,
-      payload: { index, name, password }
-    }
+}
+
+export const editPassword = (index, name, password) => {
+  return {
+    type: EDIT_PASSWORD,
+    payload: { index, name, password }
   }
+}
