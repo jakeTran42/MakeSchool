@@ -11,7 +11,7 @@ const timerReducer = (state= [], action) => {
                 if (index !== action.payload.index) {
                     return item
                 }
-                return { ...item, time: 0 };
+                return { ...item, time: 0, isRunning: false };
             })
 
         case DELETE_TIMER:

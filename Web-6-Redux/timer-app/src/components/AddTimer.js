@@ -13,6 +13,11 @@ class NewTimer extends Component {
           name: ''
       }
     }
+
+    addTimerhandler = (e) => {
+      {this.props.addTimer(this.state.name)}
+      this.setState({name: ''})
+    }
   
     render() {
       return (
@@ -26,7 +31,7 @@ class NewTimer extends Component {
            placeholder={'Timer\'s Name'} />
            
           {/* The save button should addTimer from props and pass the name from state */}
-          <button onClick={(e) => {this.props.addTimer(this.state.name)}}>
+          <button onClick={(e) => this.addTimerhandler(e)}>
               Add</button>
         </div>
       )
