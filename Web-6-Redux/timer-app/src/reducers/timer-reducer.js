@@ -16,7 +16,6 @@ const timerReducer = (state= [], action) => {
 
         case DELETE_TIMER:
             const { index } = action.payload
-            console.log(action.payload.index)
             return [...state.slice(0, index), ...state.slice(index + 1)]
 
         case START_TIMER:
@@ -36,7 +35,6 @@ const timerReducer = (state= [], action) => {
             })
 
         case TOGGLE_TIMER:
-            console.log(action.payload.index)
             return state.map((item, index) => {
                 if (index !== action.payload.index) {
                     return item
