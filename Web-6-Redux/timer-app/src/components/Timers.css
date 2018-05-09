@@ -1,0 +1,9 @@
+.eachTimer {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #222;
+    width: 500px;
+    margin: auto;
+    margin-bottom: 10px;
+    align-items: center;
+}

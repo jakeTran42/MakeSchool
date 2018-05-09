@@ -5,6 +5,6 @@ import selectTimerReducer from './select-timer-reducer';
 export default combineReducers({
 
     timers: timerReducer,
-    selectedTimer: selectTimerReducerm
+    selectedTimer: selectTimerReducer
 
 })

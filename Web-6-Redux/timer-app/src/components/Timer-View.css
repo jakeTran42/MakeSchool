@@ -1,0 +1,119 @@
+.timerController {
+    display: flex;
+    flex-direction: row;
+}
+
+.start-btn, .toggle-btn, .stop-btn {
+    background: #fff;
+    color: #222;
+    border-radius: 50%;
+    border: 1px solid #222;
+    height: 50px;
+    width: 50px;
+    font: bold 15px arial, sans-serif;
+    text-shadow: none;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    margin: 10px;
+}
+
+.start-btn:hover {
+    color: #12A812;
+    cursor: pointer;
+    border-color: #12A812;
+}
+
+.toggle-btn:hover {
+    background-color: #222;
+    color: #fff;
+    cursor: pointer;
+}
+
+.stop-btn:hover {
+    color: #E92F2F;
+    cursor: pointer;
+    border: 1px solid #E92F2F;
+}
+
+/* .delete-btn:hover {
+    background-color: #E92F2F;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid #fff;
+} */
+
+
+.toggle-btn:active {
+    color: #5E5EB6;
+    text-decoration: none;
+    border-color: #5E5EB6;
+}
+
+.start-btn:active {
+    color: #064A06;
+    text-decoration: none;
+    border-color: #064A06;
+}
+
+.stop-btn:active {
+    color: #6F1211;
+    text-decoration: none;
+    border-color: #6F1211;
+}
+
+.delete-btn {
+    transition: 500ms;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #222;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.xtop {
+    transition: 250ms;
+    width: 35px;
+    height: 5px;
+    border: 1px solid #222;
+    border-bottom: none;
+    display: inline-block;
+    background-color: #C91919;
+    border-radius: 3px 3px 0 0;
+}
+
+.xbottom {
+    transition: 250ms;
+    width: 35px;
+    height: 5px;
+    border: 1px solid #222;
+    border-top: none;
+    display: inline-block;
+    background-color: #C91919;
+    border-radius: 0 0 3px 3px;
+}
+
+.delete-btn:hover {
+    border: 1px solid #C91919;
+}
+
+.delete-btn:hover>.xtop {
+    border: none;
+    border-radius: 3px;
+    transition: 250ms;
+    transform: rotate(45deg)
+    translate(3px, 2px)
+}
+
+.delete-btn:hover>.xbottom {
+    border: none;
+    border-radius: 3px;
+    transition: 250ms;
+    transform: rotate(-45deg)
+    translate(1px, -2px)
+}

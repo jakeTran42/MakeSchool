@@ -1,0 +1,37 @@
+input,
+textarea {
+  background: none;
+  color: #222;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 320px;
+  height: 19px;
+  border: none;
+  border-radius: 5px;
+  border: 1px solid gray;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+button {
+    border-radius: 5px;
+    color: #39AA39;
+    font-size: 16px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    margin: 10px;
+}
+
+button:hover {
+    background: #39AA39;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.addTimerController {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
