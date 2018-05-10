@@ -15,8 +15,8 @@ class ListTimers extends Component {
 
     const timer = this.props.timers.map((timer, i) => {
         return (
-            <div className='eachTimer'>
-                <TimerView key={i} timer={timer} index={this.props.selectTimer(i).payload.index} />
+            <div className='eachTimer' key={i}>
+                <TimerView timer={timer} index={this.props.selectTimer(i).payload.index} />
             </div>
         )
     })

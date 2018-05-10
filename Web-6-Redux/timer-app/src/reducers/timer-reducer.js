@@ -4,6 +4,10 @@ const timerReducer = (state= [], action) => {
     switch (action.type) {
         case NEW_TIME:
             const { name, time, isRunning } = action.payload
+            if ( action.payload.name === '' ) {
+                const defaultName = 'Timer ' + (state.length + 1).toString()
+                return [...state, { name: defaultName, time, isRunning }]
+            }
             return [...state, { name, time, isRunning }]
 
         case RESET_TIMER:
@@ -39,7 +43,7 @@ const timerReducer = (state= [], action) => {
                 if (index !== action.payload.index) {
                     return item
                 }
-                return { ...item, isRunning: !isRunning };
+                return { ...item, isRunning: !item.isRunning };
             })
         
         case UPDATE:

@@ -10,11 +10,21 @@ class TimerView extends Component {
 
   }
 
+  convertTime = () => {
+    let seconds = Math.ceil(this.props.timer.time / 1000)
+    let minutes = 0
+    if (seconds > 59) {
+      minutes += 1
+      seconds = 0
+    }
+    return minutes + ':' + seconds
+  }
+
   render() {
     return (
       <div>
         <h2>{this.props.timer.name}</h2>
-        <h1>{this.props.timer.time}</h1>
+        <h1>{this.convertTime()}</h1>
         <div className='timerController'>
             <div className='start-btn' onClick={(e) => {this.props.startTimer(this.props.index)}}>Start</div>
             <div className='stop-btn' onClick={(e) => {this.props.stopTimer(this.props.index)}}>Stop</div>

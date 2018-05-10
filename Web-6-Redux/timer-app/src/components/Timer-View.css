@@ -43,12 +43,20 @@
     border: 1px solid #E92F2F;
 }
 
-/* .delete-btn:hover {
+.delete-btn:hover {
     background-color: #E92F2F;
     cursor: pointer;
     color: #fff;
     border: 1px solid #fff;
-} */
+}
+
+.delete-btn:hover>.xtop {
+    background-color: #fff;
+}
+
+.delete-btn:hover>.xbottom {
+    background-color: #fff;
+}
 
 
 .toggle-btn:active {

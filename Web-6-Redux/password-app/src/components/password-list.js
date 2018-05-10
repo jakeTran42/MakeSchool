@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { deletePassword } from '../actions'
 import './password-list.css';
 
 
@@ -13,7 +14,10 @@ class PasswordList extends Component {
           <h1>Name</h1> <span>{pass.name}</span> 
           <h1>Password</h1> <span>{pass.password}</span> 
           <h1>Strength</h1> <span>{pass.rating}</span>
-        </div>)
+          <h4 className='delete-btn' onClick={(e) => {this.props.deletePassword(index)}}>Delete</h4>
+        </div>
+        )
+
     })
   }
 
@@ -32,4 +36,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(PasswordList)
+const mapDispatchToProps = () => {
+  return {
+    deletePassword
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps())(PasswordList)
