@@ -1,0 +1,18 @@
+.jokeDisplay {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #53D553;
+    width: 500px;
+    height: 75px;
+}
+
+button {
+    width: 150px;
+    height: 60px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    background-color: blueviolet;
+}
