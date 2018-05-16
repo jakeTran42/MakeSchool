@@ -10,14 +10,18 @@ class TimerView extends Component {
 
   }
 
-  convertTime = () => {
-    let seconds = Math.ceil(this.props.timer.time / 1000)
-    let minutes = 0
-    if (seconds > 59) {
-      minutes += 1
-      seconds = 0
+  padded_time = (time) => {
+    if (time < 10 ) {
+      time = '0' + time
     }
-    return minutes + ':' + seconds
+    return time
+  }
+
+  convertTime = () => {
+    let seconds = Math.floor(this.props.timer.time / 1000)
+    let minutes = Math.floor(seconds / 60)
+    let hours  = Math.floor(minutes / 60)
+    return this.padded_time(hours % 60) + ':' + this.padded_time(minutes % 60) + ':' + this.padded_time(seconds % 60)
   }
 
   render() {
