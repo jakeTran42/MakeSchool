@@ -1,5 +1,16 @@
 import { NEW_TIME, START_TIMER, DELETE_TIMER, RESET_TIMER, STOP_TIMER, TOGGLE_TIMER, UPDATE } from '../actions'
 
+
+export class Timer {
+    constructor(name) {
+        this.name = name;
+        this.isRunning = false;
+        this.time = 0;
+    }
+}
+
+
+
 const timerReducer = (state= [], action) => {
     switch (action.type) {
         case NEW_TIME:
@@ -7,6 +18,7 @@ const timerReducer = (state= [], action) => {
             if ( action.payload.name === '' ) {
                 const defaultName = 'Timer ' + (state.length + 1).toString()
                 return [...state, { name: defaultName, time, isRunning }]
+                // return [...state, new Timer(defaultName)]
             }
             return [...state, { name, time, isRunning }]
 
